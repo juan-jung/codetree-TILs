@@ -69,6 +69,8 @@ public class Main {
             //공 발사
             score += throwBall(turn, teams);
             turn++;
+
+
         }
 
         System.out.println(score);
@@ -87,14 +89,16 @@ public class Main {
             for(int i=1;i<=m;i++) {
                 int cnt = 1;
                 Person cur = teams[i].head;
-                while(cur.next != null) {
-                    cnt++;
+                while(true) {
+                    if(cur == null) break;
                     if(cur.x==x && cur.y < minY) {
                         minY = cur.y;
                         score = (int)(teams[i].order ? Math.pow(teams[i].member_cnt-cnt+1,2) : Math.pow(cnt,2));
                         hit_team = i;
                     }
+                    cnt++;
                     cur = cur.next;
+
                 }
             }
         }
@@ -105,13 +109,14 @@ public class Main {
             for(int i=1;i<=m;i++) {
                 int cnt = 1;
                 Person cur = teams[i].head;
-                while(cur.next != null) {
-                    cnt++;
+                while(true) {
+                    if(cur == null) break;
                     if(cur.y==y && cur.x > maxX) {
                         maxX = cur.x;
                         score = (int)(teams[i].order ? Math.pow(teams[i].member_cnt-cnt+1,2) : Math.pow(cnt,2));
                         hit_team = i;
                     }
+                    cnt++;
                     cur = cur.next;
                 }
             }
@@ -124,13 +129,14 @@ public class Main {
             for(int i=1;i<=m;i++) {
                 int cnt = 1;
                 Person cur = teams[i].head;
-                while(cur.next != null) {
-                    cnt++;
+                while(true) {
+                    if(cur == null) break;
                     if(cur.x==x && cur.y > maxY) {
                         maxY = cur.y;
                         score = (int)(teams[i].order ? Math.pow(teams[i].member_cnt-cnt+1,2) : Math.pow(cnt,2));
                         hit_team = i;
                     }
+                    cnt++;
                     cur = cur.next;
                 }
             }
@@ -142,18 +148,24 @@ public class Main {
             for(int i=1;i<=m;i++) {
                 int cnt = 1;
                 Person cur = teams[i].head;
-                while(cur.next != null) {
-                    cnt++;
+                while(true) {
+                    if(cur == null) break;
                     if(cur.y==y && cur.x < minX) {
                         minX = cur.x;
                         score = (int)(teams[i].order ? Math.pow(teams[i].member_cnt-cnt+1,2) : Math.pow(cnt,2));
                         hit_team = i;
                     }
+                    cnt++;
                     cur = cur.next;
                 }
             }
         }
         if(hit_team!=-1) teams[hit_team].order = !teams[hit_team].order;
+
+        //test
+//        System.out.println(score);
+        //test
+
         return score;
     }
 
