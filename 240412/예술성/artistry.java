@@ -53,7 +53,7 @@ public class Main {
                     touched[groups.groupMap[xy[0]][xy[1]]]++;
                 }
                 for(int i=0;i<touched.length;i++) {
-                    if(touched[i]==0 || groups.v[groups.groups.get(i).idx][group.idx]) continue;
+                    if(touched[i]==0 || groups.v[groups.groups.get(i).idx][group.idx] || groups.v[group.idx][groups.groups.get(i).idx]) continue;
                     //예술 점수 계산 : (.a칸수 + b칸수) * a color * b color * boundary
                     ans += ((group.size + groups.groups.get(i).size) * group.color * groups.groups.get(i).color * touched[i]);
 
@@ -70,7 +70,9 @@ public class Main {
             rotateEdge(map,0,N/2+1);
             rotateEdge(map,N/2+1,0);
             rotateEdge(map,N/2+1,N/2+1);
+
         }
+
 
         System.out.println(ans);
         br.close();
@@ -89,6 +91,7 @@ public class Main {
             ny = y+dy2[tempDir];
         }
         rotateEach(nx, ny, temp, tempDir, minX, minY, maxX, maxY, stopX, stopY, map);
+
     }
 
     static void rotateEdge(int[][] map, int x, int y) {
