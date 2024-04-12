@@ -11,6 +11,7 @@ public class Main {
         HashMap<String, int[]> guestMap = new HashMap<>();
         int total_sushi_cnt = 0;
         int total_guest_cnt = 0;
+        StringBuilder sb = new StringBuilder();
         for(int q=0;q<Q;q++) {
             st = new StringTokenizer(br.readLine()," ");
             int op = Integer.parseInt(st.nextToken());
@@ -46,8 +47,12 @@ public class Main {
                         // t x
                         int[] sushi = (int[])iter.next();
                         //사람이먼저왔으면 x가 초기위치 , 아니면 시간차이만큼 이동한 자리가 초기위치
-                        int sushiStartX = (sushi[1] + (gtime > sushi[0] ? gtime-sushi[0] : 0))%L;
-                        int sushiMEndX = sushiStartX + t - (gtime > sushi[0] ? gtime : sushi[0]);
+//                        long sushiStartX = (sushi[1] + (gtime > sushi[0] ? gtime-sushi[0] : 0))%L;
+//                        long sushiMEndX = sushiStartX + t - (gtime > sushi[0] ? gtime : sushi[0]);
+
+                        long sushiStartX = ((long) sushi[1] + (gtime > sushi[0] ? (long) gtime - (long) sushi[0] : 0)) % L;
+                        long sushiMEndX = sushiStartX + (long) t - (gtime > sushi[0] ? (long) gtime : (long) sushi[0]);
+
                         if((gX>=sushiStartX && gX<=sushiMEndX) || gX<=(sushiMEndX%L) || sushiMEndX-sushiStartX >=L-1) {
                             total_sushi_cnt--;
                             iter.remove();
@@ -57,8 +62,9 @@ public class Main {
                     if(leftSushi == 0) total_guest_cnt--;
                     guestMap.put(key,new int[]{gtime, gX, leftSushi});
                 }
-                System.out.println(total_guest_cnt + " " + total_sushi_cnt);
+                sb.append(total_guest_cnt + " " + total_sushi_cnt + "\n");
             }
         }
+        System.out.println(sb);
     }
 }
