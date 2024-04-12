@@ -40,7 +40,7 @@ public class Main {
                     int leftSushi = guestInfo[2];
                     if(leftSushi == 0) continue;
 
-                    ArrayList<int[]> sushis = sushiMap.get(key);
+                    ArrayList<int[]> sushis = sushiMap.getOrDefault(key, new ArrayList<int[]>());
                     Iterator iter = sushis.iterator();
                     while(iter.hasNext()) {
                         // t x
