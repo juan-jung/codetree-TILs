@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws Exception{
+        // System.setIn(new FileInputStream("C:\\Users\\crumb\\projects\\algo\\src\\main\\java\\codetree\\input.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine()," ");
         int L = Integer.parseInt(st.nextToken());// 3 - 10억
@@ -50,17 +51,19 @@ public class Main {
 //                        long sushiStartX = (sushi[1] + (gtime > sushi[0] ? gtime-sushi[0] : 0))%L;
 //                        long sushiMEndX = sushiStartX + t - (gtime > sushi[0] ? gtime : sushi[0]);
 
-                        long sushiStartX = ((long) sushi[1] + (gtime > sushi[0] ? (long) gtime - (long) sushi[0] : 0)) % L;
-                        long sushiMEndX = sushiStartX + (long) t - (gtime > sushi[0] ? (long) gtime : (long) sushi[0]);
+                        long sushiStartX = ((long) sushi[1] + (long)(gtime > sushi[0] ? (long) gtime - (long) sushi[0] : 0))%L;
+                        long sushiMEndX = sushiStartX + (long) t - (long)(gtime > sushi[0] ? (long) gtime : (long) sushi[0]);
 
-                        if((gX>=sushiStartX && gX<=sushiMEndX) || gX<=(sushiMEndX%L) || sushiMEndX-sushiStartX >=L-1) {
+                        if((gX>=sushiStartX && gX<=sushiMEndX) || (gX<=(sushiMEndX%L)&&sushiMEndX>L-1) || sushiMEndX-sushiStartX+1 >= L) {
                             total_sushi_cnt--;
                             iter.remove();
                             leftSushi--;
                         }
                     }
-                    if(leftSushi == 0) total_guest_cnt--;
                     guestMap.put(key,new int[]{gtime, gX, leftSushi});
+                    if(leftSushi == 0) {
+                        total_guest_cnt--;
+                    }
                 }
                 sb.append(total_guest_cnt + " " + total_sushi_cnt + "\n");
             }
