@@ -35,12 +35,12 @@ public class Main {
             else if(op==300) {
                 //guest 순회하며 먹임
                 Set<String> keytSet = guestMap.keySet();
+                Set<String> toRemove = new HashSet<>();
                 for(String key : keytSet) {
                     int[] guestInfo = guestMap.get(key);
                     int gtime = guestInfo[0];
                     int gX = guestInfo[1];
                     int leftSushi = guestInfo[2];
-                    if(leftSushi == 0) continue;
 
                     ArrayList<int[]> sushis = sushiMap.getOrDefault(key, new ArrayList<int[]>());
                     Iterator iter = sushis.iterator();
@@ -63,8 +63,11 @@ public class Main {
                     guestMap.put(key,new int[]{gtime, gX, leftSushi});
                     if(leftSushi == 0) {
                         total_guest_cnt--;
+                        toRemove.add(key);
                     }
                 }
+
+                for(String key : toRemove) guestMap.remove(key);
                 sb.append(total_guest_cnt + " " + total_sushi_cnt + "\n");
             }
         }
