@@ -36,8 +36,6 @@ public class Main {
                 }
                 else {
                     if(r<3) {
-                        // for(int[] a : forest) System.out.println(Arrays.toString(a));
-                        // System.out.println();
                         forest = new int[R+2][C];
                     }
                     else {
@@ -52,8 +50,7 @@ public class Main {
                         findMax(r,c,forest,exits,v,center,R,C);
                         ans += max;
 
-                        // System.out.println(i + " " + max);
-                        // for(int[] a : forest) System.out.println(Arrays.toString(a));
+                        for(int[] a : forest) System.out.println(Arrays.toString(a));
 
                     }
                     break;
@@ -61,7 +58,6 @@ public class Main {
             }
         }
 
-        // for(int[] a : forest) System.out.println(Arrays.toString(a));
         System.out.println(ans);
     }
 
