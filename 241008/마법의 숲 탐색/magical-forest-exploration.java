@@ -21,6 +21,10 @@ public class Main {
             int exit = Integer.parseInt(st.nextToken()); //북동남서
             
             while(true) {
+                // if(i==5) {
+                //     System.out.println(r + " " + c );
+                //     // for(int[] a : forest) System.out.println(Arrays.toString(a));
+                // }
                 if(southAvailable(r,c,forest,R,C)) {
                     r++;
                 }
@@ -36,7 +40,7 @@ public class Main {
                 }
                 else {
                     if(r<4) {
-                        forest = new int[R+2][C];
+                        forest = new int[R+3][C];
                     }
                     else {
                         center[i][0] = r;
