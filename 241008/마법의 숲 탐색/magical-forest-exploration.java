@@ -11,7 +11,7 @@ public class Main {
         int C = Integer.parseInt(st.nextToken());
         int K = Integer.parseInt(st.nextToken());
 
-        int[][] forest = new int[R+2][C];
+        int[][] forest = new int[R+3][C];
         int[] exits = new int[K+1]; //출구방향 저장
         int[][] center = new int[K+1][2];
         for(int i=1;i<=K;i++) {
@@ -21,10 +21,6 @@ public class Main {
             int exit = Integer.parseInt(st.nextToken()); //북동남서
             
             while(true) {
-                // if(i==5) {
-                //     System.out.println(i);
-                //     for(int[] a : forest) System.out.println(Arrays.toString(a));
-                // }
                 if(southAvailable(r,c,forest,R,C)) {
                     r++;
                 }
@@ -53,12 +49,6 @@ public class Main {
                         v[i] = true;
                         findMax(r,c,forest,exits,v,center,R,C);
                         ans += max;
-
-                        // if(i>=5) {
-                        //     System.out.println(i + " : " + max);
-                        //     for(int[] a : forest) System.out.println(Arrays.toString(a));
-                        // }
-
                     }
                     break;
                 }
@@ -69,7 +59,7 @@ public class Main {
     }
 
     static void findMax(int r, int c, int[][] forest, int[] exits, boolean[] v, int[][] center,int R, int C) {
-        max = Math.max(max, r);
+        max = Math.max(max, r-1);
 
         for(int d=0;d<4;d++) {
             int nr = r+dx[exits[forest[r][c]]]+dx[d];
@@ -81,7 +71,7 @@ public class Main {
     }
 
     static boolean southAvailable(int r, int c, int[][] forest, int R, int C) {
-        if(r==R) return false;
+        if(r==R+1) return false;
 
         if(forest[r+1][c-1]!=0) return false;
         if(forest[r+1][c+1]!=0) return false;
