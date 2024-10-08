@@ -35,7 +35,7 @@ public class Main {
                     exit = (exit+1)%4;
                 }
                 else {
-                    if(r<3) {
+                    if(r<4) {
                         forest = new int[R+2][C];
                     }
                     else {
