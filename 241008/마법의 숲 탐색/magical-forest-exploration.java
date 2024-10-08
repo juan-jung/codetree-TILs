@@ -16,11 +16,15 @@ public class Main {
         int[][] center = new int[K+1][2];
         for(int i=1;i<=K;i++) {
             st = new StringTokenizer(br.readLine(), " ");
-            int r = 0;
+            int r = 1;
             int c = Integer.parseInt(st.nextToken())-1;
             int exit = Integer.parseInt(st.nextToken()); //북동남서
             
             while(true) {
+                // if(i==5) {
+                //     System.out.println(i);
+                //     for(int[] a : forest) System.out.println(Arrays.toString(a));
+                // }
                 if(southAvailable(r,c,forest,R,C)) {
                     r++;
                 }
@@ -50,7 +54,10 @@ public class Main {
                         findMax(r,c,forest,exits,v,center,R,C);
                         ans += max;
 
-                        // for(int[] a : forest) System.out.println(Arrays.toString(a));
+                        // if(i>=5) {
+                        //     System.out.println(i + " : " + max);
+                        //     for(int[] a : forest) System.out.println(Arrays.toString(a));
+                        // }
 
                     }
                     break;
