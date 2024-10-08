@@ -71,7 +71,7 @@ public class Main {
     }
 
     static boolean southAvailable(int r, int c, int[][] forest, int R, int C) {
-        if(r==R+1) return false;
+        if(r>=R+1) return false;
 
         if(forest[r+1][c-1]!=0) return false;
         if(forest[r+1][c+1]!=0) return false;
