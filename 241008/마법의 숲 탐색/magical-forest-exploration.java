@@ -50,7 +50,7 @@ public class Main {
                         findMax(r,c,forest,exits,v,center,R,C);
                         ans += max;
 
-                        for(int[] a : forest) System.out.println(Arrays.toString(a));
+                        // for(int[] a : forest) System.out.println(Arrays.toString(a));
 
                     }
                     break;
