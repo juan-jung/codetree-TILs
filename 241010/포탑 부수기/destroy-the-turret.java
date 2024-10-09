@@ -109,10 +109,16 @@ public class Main {
                 }
             }
 
-            recentAttack[attacker[0]][attacker[1]] = k;
-            turrets[attacker[0]][attacker[1]] += N+M;
+            
+            
 
-            if(turretCnt == 1) break;
+            if(turretCnt == 1) {
+                // System.out.println("k : " + k);
+                break;
+            }
+
+            turrets[attacker[0]][attacker[1]] += N+M;
+            recentAttack[attacker[0]][attacker[1]] = k;
 
             ArrayDeque<Node> q = new ArrayDeque<>();
             boolean[][] v = new boolean[N][M];
@@ -183,10 +189,12 @@ public class Main {
                     turrets[i][j]++;
                 }
             }
-
-            // System.out.println("after attack to " + Arrays.toString(defender) + " from " + Arrays.toString(attacker));
-            // for(int[] a : turrets) System.out.println(Arrays.toString(a));
-            // System.out.println();
+            
+            // if(k >= 75) {
+            //     System.out.println("after turn" + k + " attack to " + Arrays.toString(defender) + " from " + Arrays.toString(attacker));
+            //     for(int[] a : turrets) System.out.println(Arrays.toString(a));
+            //     System.out.println();
+            // }
         }
 
         int ans = 0;
