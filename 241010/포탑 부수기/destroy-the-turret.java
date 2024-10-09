@@ -44,7 +44,7 @@ public class Main {
 
         int[][] recentAttack = new int[N][M];
         //우하상좌
-        int[] dx = {0,1,-1,0,-1,-1,1,1}, dy = {1,0,0,-1,-1,1,-1,1};
+        int[] dx = {0,1,0,-1,-1,-1,1,1}, dy = {1,0,-1,0,-1,1,-1,1};
 
         for(int k=1;k<=K;k++) {
             int turretCnt = 0;
@@ -189,8 +189,8 @@ public class Main {
                     turrets[i][j]++;
                 }
             }
-            
-            // if(k >= 75) {
+
+            // if(k >= 0) {
             //     System.out.println("after turn" + k + " attack to " + Arrays.toString(defender) + " from " + Arrays.toString(attacker));
             //     for(int[] a : turrets) System.out.println(Arrays.toString(a));
             //     System.out.println();
