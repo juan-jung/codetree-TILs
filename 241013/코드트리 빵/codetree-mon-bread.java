@@ -59,7 +59,7 @@ public class Main {
                         int nx = cur[0] + dx[d];
                         int ny = cur[1] + dy[d];
                         if(nx<0||nx>n-1||ny<0||ny>n-1||map[nx][ny]) continue;
-                        q.offer(new int[]{nx,ny,d});
+                        q.offer(new int[]{nx,ny,cur[2]});
                     }
                 }
             }
@@ -114,13 +114,6 @@ public class Main {
 
             }
 
-            
-            // if(time==15) {
-            //     System.out.println(time + " : " + Arrays.toString(people[m-1]));
-            //     System.out.println("arrivedCnt : " + arrivedCnt);
-            //     System.out.println(Arrays.toString(arrived));
-            //     break;
-            // }
         }
 
         System.out.println(time+1);
