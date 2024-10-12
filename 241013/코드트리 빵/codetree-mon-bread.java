@@ -91,6 +91,7 @@ public class Main {
                         while(!q.isEmpty()) {
                             int[] temp = q.poll();
                             if(temp[2]!=cur[2]) break;
+                            if(baseCamp[temp[0]][temp[1]]!=1) continue;
                             if((temp[0] < cur[0]) || (temp[0]==cur[0] && temp[1] < cur[1])) cur = temp;
                          }
                         people[time][0] = cur[0];
